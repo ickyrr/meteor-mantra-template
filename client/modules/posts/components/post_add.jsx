@@ -14,7 +14,7 @@ class PostAdd extends React.Component {
     const {title,content} = this.refs;
     const t = ReactDOM.findDOMNode(title).value;
     const c = ReactDOM.findDOMNode(content).value;
-    const author = Meteor.userId();
+    const author = Meteor.user().username;
     const featImg = imgBinary.get();
 
     publishPost(t,c,author,featImg);
