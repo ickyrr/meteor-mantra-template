@@ -15,8 +15,8 @@ const PostSingle = ({post}) => (
   </div>
 );
 
-const formatDate =(date) => {
+const formatDate = (date) => {
   return moment(date).calendar();
-}
+};
 
 export default PostSingle;

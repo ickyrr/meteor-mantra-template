@@ -26,5 +26,8 @@ export default {
         FlowRouter.go('/');
       });
     });
+  },
+  removePost({FlowRouter},id) {
+    console.log('removing '+ id);
   }
 };
