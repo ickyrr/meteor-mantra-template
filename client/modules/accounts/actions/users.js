@@ -1,17 +1,18 @@
+import {Meteor} from 'meteor/meteor';
 import User from '/lib/collections/users.js';
 
 export default {
   register({LocalState,FlowRouter},username,email,password) {
     if (!username || !email || !password) {
       return LocalState.set('REGISTRATION_ERROR',
-                            'Please make sure to fill up all fields on the form');
+                            'Please make sure to fill up all fields on the form.');
     }
 
     LocalState.set('REGISTRATION_ERROR', null);
 
     const user = new User();
     const data = {
-      username: username,
+      username,
       services: {
         password: {
           bcrypt: password
@@ -35,6 +36,19 @@ export default {
         FlowRouter.go('/login');
       });
 
+    });
+  },
+  login({FlowRouter,LocalState},username, password) {
+    if (!username || !password) {
+      return LocalState.set('LOGIN_ERROR', 'Please fill up all fields.');
+    }
+    LocalState.set('LOGIN_ERROR', null);
+
+    Meteor.loginWithPassword(username,password, function (err) {
+      if (err) {
+        return LocalState.set('LOGIN_ERROR', err);
+      }
+      FlowRouter.go('/');
     });
   }
 
