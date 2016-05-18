@@ -3,7 +3,7 @@ import {mount} from 'react-mounter';
 import {Meteor} from 'meteor/meteor';
 
 import MainLayout from '/client/modules/core/components/main_layout.jsx';
-import Dashboard from './components/dashboard.jsx';
+import Dashboard from './containers/dashboard.js';
 
 
 export default function (injectDeps, {FlowRouter}) {

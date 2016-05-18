@@ -1,13 +1,13 @@
 import {useDeps, composeAll, composeWithTracker} from 'mantra-core';
 
-import PostList from '../components/post_list.jsx';
+import Dashboard from '../components/dashboard.jsx';
 import Post from '/lib/collections/posts.js';
 
 export const composer = ({context}, onData) => {
   const {Meteor} = context();
-  const subscription = Meteor.subscribe('posts');
-  if (subscription.ready()) {
-    const posts = Post.find({},{sort: {createdAt: -1}}).fetch();
+  const subs = Meteor.subscribe('posts');
+  if (subs.ready()) {
+    const posts = Post.find().fetch();
     onData(null, {posts});
   }
 };
@@ -19,4 +19,4 @@ export const depsMapper = (context) => ({
 export default composeAll(
   composeWithTracker(composer),
   useDeps(depsMapper)
-)(PostList);
+)(Dashboard);

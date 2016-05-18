@@ -1,7 +1,6 @@
 import React from 'react';
-import {Col,Panel,Media,Table,Glyphicon} from 'react-bootstrap';
-import PostFeatured from './post_featured';
-import PostTable from './post_table';
+import PostFeatured from './post_featured.jsx';
+import PostTable from './post_table.jsx';
 
 class PostList extends React.Component {
   constructor(props) {
@@ -9,14 +8,20 @@ class PostList extends React.Component {
   }
 
   render() {
-    const {listtype} = this.props;
     const {posts} = this.props;
 
-    return (
-      <div>
-        {listtype === 'featured' ? <PostFeatured posts={posts}/> : <PostTable posts={posts}/>}
-      </div>
-    );
+    const {listtype} = this.props;
+    if (listtype === 'featured') {
+      return (
+          <PostFeatured posts={posts} />
+        );
+    }
+    if (listtype === 'table') {
+      return (
+          <PostTable posts={posts} />
+      );
+    }
+
   }
 }
 

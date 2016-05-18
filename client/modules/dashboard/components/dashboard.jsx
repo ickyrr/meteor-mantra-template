@@ -1,7 +1,7 @@
 import React from 'react';
 import {Glyphicon} from 'react-bootstrap';
 
-import PostList from '/client/modules/posts/components/post_list.jsx';
+import PostList from '/client/modules/posts/containers/post_list.js';
 
 const Dashboard = () => (
     <div>

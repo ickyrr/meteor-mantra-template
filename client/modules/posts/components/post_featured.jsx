@@ -15,7 +15,7 @@ const PostFeatured = ({posts}) => (
               <Media.Heading>
                 {post.title} <small><i>{formatDate(post.createdAt)}</i></small>
               </Media.Heading>
-              <p>{post.content}</p>
+              <p>{excerptize(post.content)}</p>
               <a href={`/post/${post._id}`} className="pull-right">Read more</a>
             </Media.Body>
           </Media>
@@ -27,6 +27,10 @@ const PostFeatured = ({posts}) => (
 
 const formatDate = (date) => {
   return moment(date).calendar();
+};
+
+const excerptize = (content) => {
+  return content.substring(0,200) + '...';
 };
 
 export default PostFeatured;
