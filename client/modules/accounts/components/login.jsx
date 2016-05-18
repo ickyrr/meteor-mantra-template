@@ -25,7 +25,8 @@ class Login extends React.Component {
               <FormControl type="password" placeholder="Password" ref="password"/>
             </FormGroup>
 
-            <Button type="submit">Login</Button>
+            <Button type="submit">Login</Button> &nbsp;
+            <a href="/register">Create a new account</a>
           </form>
         </Panel>
       </Col>

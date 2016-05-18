@@ -16,6 +16,7 @@ export default function (injectDeps, {FlowRouter}) {
       });
     }
   });
+
   FlowRouter.route('/login', {
     name: 'login',
     action() {
