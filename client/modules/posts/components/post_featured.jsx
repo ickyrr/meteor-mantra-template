@@ -1,32 +1,32 @@
 import React from 'react';
-import {Col,Panel,Row,Media} from 'react-bootstrap';
+import {Col,Panel,Media} from 'react-bootstrap';
+import moment from 'moment';
 
-class PostFeatured extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    return (
-      <Col xs={12}>
+const PostFeatured = ({posts}) => (
+  <div>
+    {posts ? posts.map( (post) => (
+      <Col xs={12} key={post._id}>
         <Panel>
           <Media>
             <Media.Left align="top">
-              <img width={100} height={100} src="/assets/thumbnail.png" alt="Image"/>
+              <img width={80} height={80} src={post.featured} alt="Image"/>
             </Media.Left>
             <Media.Body>
               <Media.Heading>
-                Post Title <small><i>Post createdAt</i></small>
+                {post.title} <small><i>{formatDate(post.createdAt)}</i></small>
               </Media.Heading>
-              <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
-              <p>Donec sed odio dui. Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
-              <a href="#" className="pull-right">Read more</a>
+              <p>{post.content}</p>
+              <a href={`/post/${post._id}`} className="pull-right">Read more</a>
             </Media.Body>
           </Media>
         </Panel>
       </Col>
-    );
-  }
-}
+    )) : 'No posts yet'}
+  </div>
+);
+
+const formatDate = (date) => {
+  return moment(date).calendar();
+};
 
 export default PostFeatured;

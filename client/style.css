@@ -1,0 +1,10 @@
+.featured-img {
+    display: block;
+    position: relative;
+    height: 180px;
+    width: 171px;
+    overflow: hidden;
+}
+.featured-img img {
+    max-width: 100%;
+}

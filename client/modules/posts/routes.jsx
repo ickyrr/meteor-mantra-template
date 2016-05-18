@@ -2,8 +2,8 @@ import React from 'react';
 import {mount} from 'react-mounter';
 
 import MainLayout from '/client/modules/core/components/main_layout.jsx';
-import PostList from './components/post_list.jsx';
-import PostAdd from './components/post_add.jsx';
+import PostList from './containers/post_list.js';
+import PostAdd from './containers/post_add.js';
 
 export default function (injectDeps, {FlowRouter}) {
   const MainLayoutCtx = injectDeps(MainLayout);
